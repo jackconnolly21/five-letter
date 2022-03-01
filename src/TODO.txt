@@ -1,0 +1,6 @@
+# TODO
+
+1. Get rid of Counter stuff
+2. Augment handle guess function with rules
+3. Port over dictionary and other things
+4. Create list of past guesses
