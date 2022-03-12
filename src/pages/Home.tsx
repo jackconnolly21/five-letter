@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react'
-import Guess from '../components/guess'
+import { GuessInput, GuessesTable } from '../components/guess'
 
 export const Home: React.FC = () => {
   return (
     <Fragment>
-      <h1>Redux + TypeScript</h1>
+      <h1>Five Letter Word</h1>
       <p>Hello and welcome! :) This app is called Five Letter Word Game</p>
-      <Guess />
+      <GuessInput />
+      <GuessesTable />
     </Fragment>
   )
 }

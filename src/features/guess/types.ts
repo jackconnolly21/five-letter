@@ -1,18 +1,24 @@
-import { GUESS_WORD } from './actions'
+import { GUESS_WORD, RESET_GAME } from './actions'
+
+export interface GuessResult {
+  guess: string
+  result: number
+}
 
 interface GuessWordAction {
   type: typeof GUESS_WORD
+  payload: GuessResult
 }
-export type GuessActionTypes = GuessWordAction
 
-export interface GuessResult {
-  guess: string,
-  result: number,
+interface ResetGameAction {
+  type: typeof RESET_GAME
 }
+
+export type GuessActionTypes = GuessWordAction | ResetGameAction
 
 export interface GuessState {
   guess: {
-    word: string
+    mystery: string | null
     count: number
     guesses: GuessResult[]
   }

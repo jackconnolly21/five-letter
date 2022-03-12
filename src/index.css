@@ -21,3 +21,24 @@ code {
   display: flex;
   justify-content: space-between;
 }
+
+.inline {
+  display: inline;
+  padding: 5px;
+}
+
+.padded {
+  padding: 5px;
+}
+
+.classRed {
+  color: red;
+}
+
+.classBlue {
+  color: blue;
+}
+
+.classGreen {
+  color: green;
+}

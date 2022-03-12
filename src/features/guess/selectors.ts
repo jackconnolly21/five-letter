@@ -1,6 +1,6 @@
 import { GuessState } from './types'
 
-export const getMysteryWord = (state: GuessState) => state.guess.word
+export const getMysteryWord = (state: GuessState) => state.guess.mystery
 
 export const getNumberGuesses = (state: GuessState) => state.guess.count
 
