@@ -18,7 +18,7 @@ export type GuessActionTypes = GuessWordAction | ResetGameAction
 
 export interface GuessState {
   guess: {
-    mystery: string | null
+    mystery: string
     count: number
     guesses: GuessResult[]
   }

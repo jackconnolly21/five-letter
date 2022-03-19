@@ -1,13 +1,11 @@
-import React, { Fragment } from 'react'
-import { GuessInput, GuessesTable } from '../components/guess'
+import React from 'react'
+import { Game } from '../components/guess'
 
 export const Home: React.FC = () => {
   return (
-    <Fragment>
-      <h1>Five Letter Word</h1>
-      <p>Hello and welcome! :) This app is called Five Letter Word Game</p>
-      <GuessInput />
-      <GuessesTable />
-    </Fragment>
+    <div>
+      <h2 className="centeredContainer">Five Letter</h2>
+      <Game />
+    </div>
   )
 }

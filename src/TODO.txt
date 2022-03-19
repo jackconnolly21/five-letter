@@ -4,6 +4,8 @@
 - History of results?
 - Use connect to and stateToProps, dispatchToProps
 - Update dictionaries into redux state
+- nicer styling
+- make input like wordle
 
 - enter button to work
 - more fun winning pop up

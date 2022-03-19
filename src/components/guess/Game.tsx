@@ -2,13 +2,15 @@ import React, { Fragment, useState } from 'react'
 import ReactModal from 'react-modal'
 import { useSelector, useDispatch } from 'react-redux'
 import { actions, selectors } from '../../features/guess'
-import { Button, Card } from '../common'
+import { Button } from '../common'
 import { getScore, validateGuess } from './helpers'
+import LetterBoard from './LetterBoard'
 
-const GuessInput: React.FC = () => {
+const Game: React.FC = () => {
   const guessNumber = useSelector(selectors.getNumberGuesses)
   const mysteryWord = useSelector(selectors.getMysteryWord)
-  const guessesCount = useSelector(selectors.getNumberGuesses)
+  const numGuesses = useSelector(selectors.getNumberGuesses)
+  const pastGuesses = useSelector(selectors.getPastGuesses)
 
   const dispatch = useDispatch()
 
@@ -31,10 +33,10 @@ const GuessInput: React.FC = () => {
   const handleGuess = () => {
     const validationResult = validateGuess(guess)
     if (validationResult.isValid) {
-      const score = getScore(guess, mysteryWord ?? '')
+      const score = getScore(guess, mysteryWord)
       if (score == 6) {
         setIsLocked(true)
-        alert(`You won in ${guessesCount} guesses! The word was ${guess}.`)
+        alert(`You won in ${numGuesses + 1} guesses! The word was ${guess}.`)
       }
 
       dispatch({
@@ -69,9 +71,9 @@ const GuessInput: React.FC = () => {
 
   return (
     <Fragment>
-      <div className="padded">
+      <div className="padded centeredContainer">
         <div className="inline">
-          <Button title="New Game" action={newGame} color="red" />
+          <Button title="New Game" action={newGame} color="blue" />
         </div>
 
         <div className="inline">
@@ -83,36 +85,52 @@ const GuessInput: React.FC = () => {
             }}
             color="blue"
           />
-          {showAnswer && (
-            <Card title={`Mystery Word`} body={<div>{mysteryWord}</div>} />
-          )}
         </div>
 
-        <div className="inline">
+        {/* <div className="inline">
           <Button title="Open Modal" action={() => setIsModalOpen(true)} />
-        </div>
+        </div> */}
       </div>
 
-      <Card
-        title={`Guess #${guessNumber + 1}`}
-        body={
-          <input
-            type="text"
-            value={guess}
-            name="guess"
-            onChange={handleGuessInput}
-            disabled={isLocked}
-          />
-        }
-        action={
-          <Button
-            title="Guess"
-            action={handleGuess}
-            isDisabled={isLocked}
-            color="green"
-          />
-        }
-      />
+      <div className="centeredContainer padded">
+        {showAnswer && (
+          <div>
+            <b>The word was {mysteryWord.toUpperCase()}</b>
+          </div>
+        )}
+      </div>
+
+      <LetterBoard guessResults={pastGuesses} />
+
+      <div className="centeredContainer">
+        <div className="card grey">
+          <div className="card-content white-text">
+            <span className="card-title">{`Guess #${guessNumber + 1}`}</span>
+            {
+              <input
+                type="text"
+                value={guess}
+                name="guess"
+                onChange={handleGuessInput}
+                disabled={isLocked}
+              />
+            }
+
+            <div className="centeredContainer">
+              <div>
+                {
+                  <Button
+                    title="Guess"
+                    action={handleGuess}
+                    isDisabled={isLocked}
+                    color="green"
+                  />
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <ReactModal
         isOpen={isModalOpen}
@@ -128,4 +146,4 @@ const GuessInput: React.FC = () => {
   )
 }
 
-export default GuessInput
+export default Game

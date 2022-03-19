@@ -1,5 +1,3 @@
-import GuessesTable from './GuessesTable'
-import GuessInput from './GuessInput'
+import Game from './Game'
 
-export { GuessInput }
-export { GuessesTable }
+export { Game }
