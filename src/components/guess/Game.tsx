@@ -87,9 +87,9 @@ const Game: React.FC = () => {
           />
         </div>
 
-        {/* <div className="inline">
+        <div className="inline">
           <Button title="Open Modal" action={() => setIsModalOpen(true)} />
-        </div> */}
+        </div>
       </div>
 
       <div className="centeredContainer padded">
