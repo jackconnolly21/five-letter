@@ -7,5 +7,7 @@
 - nicer styling
 - make input like wordle
 
+- keyboard input
+
 - enter button to work
 - more fun winning pop up

@@ -59,7 +59,7 @@ const Game: React.FC = () => {
     }
 
     // Passed preliminary validations
-    setGuess(e.target.value)
+    setGuess(e.target.value.toLowerCase())
   }
 
   const newGame = () => {
@@ -100,7 +100,7 @@ const Game: React.FC = () => {
         )}
       </div>
 
-      <LetterBoard guessResults={pastGuesses} />
+      <LetterBoard guessResults={pastGuesses} currentGuess={guess} />
 
       <div className="centeredContainer">
         <div className="card grey">

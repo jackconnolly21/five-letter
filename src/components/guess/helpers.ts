@@ -27,10 +27,11 @@ const isInDictionary = (guess: string) => {
 }
 
 export const validateGuess = (guess: string) => {
+  guess = guess.toLowerCase()
   if (guess.length != 5) {
     return { isValid: false, errorMessage: 'Guess must be 5 letter word' }
   }
-  if (guess.search(/[^A-Za-z]/) != -1) {
+  if (guess.search(/[^a-z]/) != -1) {
     return { isValid: false, errorMessage: 'Guess must only contain letters' }
   }
   if (!isInDictionary(guess)) {

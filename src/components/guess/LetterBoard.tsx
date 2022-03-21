@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { GuessResult } from '../../features/guess/types'
 
-const LetterBoard: React.FC<Props> = ({ guessResults }) => {
+const LetterBoard: React.FC<Props> = ({ guessResults, currentGuess }) => {
   const getResultColor = (result: number) => {
     if (result == 0) {
       return 'red'
@@ -12,49 +12,57 @@ const LetterBoard: React.FC<Props> = ({ guessResults }) => {
     }
   }
 
-  const boxStyles = (color?: string, backgroundColor?: string) => {
-    return {
-      backgroundColor: backgroundColor ?? '#444',
-      color: color ?? '#fff',
-      border: '2px solid #969696',
-      height: 50,
-      padding: 5,
-      width: 50,
-      justifyContent: 'center',
-      alignItems: 'center',
-      display: 'flex',
-    }
+  const boxStyles = {
+    border: '2px solid #969696',
+    height: 50,
+    padding: 5,
+    width: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    display: 'flex',
   }
 
-  const letterRow = (guessResult: GuessResult, i: number) => {
-    if (guessResult.guess.length > 5) {
+  const letterRow = (guess: string, result: number | null, i: number) => {
+    if (guess.length > 5) {
       console.log('Error: Word length greater than 5')
     }
 
-    const letters = guessResult.guess.split('').map((c, idx) => (
-      <div style={boxStyles()} key={idx}>
-        {c.toUpperCase()}
+    const styles = { ...boxStyles, color: '#fff', backgroundColor: '#444' }
+    const letters = [0, 1, 2, 3, 4].map((idx) => (
+      <div style={styles} key={idx}>
+        {idx < guess.length ? guess[idx].toUpperCase() : null}
       </div>
     ))
+
+    const resultStyles = {
+      ...boxStyles,
+      color: result == null ? 'black' : getResultColor(result),
+      backgroundColor: '#969696',
+    }
 
     return (
       <div key={i} className="centeredContainer">
         {letters}
-        <div
-          style={boxStyles(getResultColor(guessResult.result), '#969696')}
-          key={`res${i}`}
-        >
-          {guessResult.result}
+        <div style={resultStyles} key={`res${i}`}>
+          {result == 6 ? 'Win!' : result}
         </div>
       </div>
     )
   }
 
-  return <Fragment>{guessResults.map((gr, i) => letterRow(gr, i))}</Fragment>
+  const currentGuessRow = letterRow(currentGuess, null, guessResults.length)
+
+  return (
+    <>
+      {guessResults.map((gr, i) => letterRow(gr.guess, gr.result, i))}
+      {currentGuessRow}
+    </>
+  )
 }
 
 interface Props {
   guessResults: GuessResult[]
+  currentGuess: string
 }
 
 export default LetterBoard
