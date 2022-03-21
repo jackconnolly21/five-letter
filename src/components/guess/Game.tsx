@@ -1,9 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import React, { Fragment, useState } from 'react'
 import ReactModal from 'react-modal'
 import { useSelector, useDispatch } from 'react-redux'
 import { actions, selectors } from '../../features/guess'
 import { Button } from '../common'
 import { getScore, validateGuess } from './helpers'
+import Keyboard from './Keyboard'
 import LetterBoard from './LetterBoard'
 
 const Game: React.FC = () => {
@@ -50,8 +53,15 @@ const Game: React.FC = () => {
     }
   }
 
-  const handleGuessInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.target.value
+  const handleKeyPress = (c: string) => {
+    // If enter, call handleGuess
+    if (c == '↵') {
+      return handleGuess()
+    }
+
+    // Otherwise update guess
+    const newValue =
+      c == '←' ? (guess.length > 0 ? guess.slice(0, -1) : '') : guess + c
 
     // Don't allow non-alpha characters or guesses longer than 5
     if (newValue.length > 5 || newValue.search(/[^A-Za-z]/) != -1) {
@@ -59,7 +69,7 @@ const Game: React.FC = () => {
     }
 
     // Passed preliminary validations
-    setGuess(e.target.value.toLowerCase())
+    setGuess(newValue.toLowerCase())
   }
 
   const newGame = () => {
@@ -102,35 +112,7 @@ const Game: React.FC = () => {
 
       <LetterBoard guessResults={pastGuesses} currentGuess={guess} />
 
-      <div className="centeredContainer">
-        <div className="card grey">
-          <div className="card-content white-text">
-            <span className="card-title">{`Guess #${guessNumber + 1}`}</span>
-            {
-              <input
-                type="text"
-                value={guess}
-                name="guess"
-                onChange={handleGuessInput}
-                disabled={isLocked}
-              />
-            }
-
-            <div className="centeredContainer">
-              <div>
-                {
-                  <Button
-                    title="Guess"
-                    action={handleGuess}
-                    isDisabled={isLocked}
-                    color="green"
-                  />
-                }
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Keyboard handleKeyPress={handleKeyPress} />
 
       <ReactModal
         isOpen={isModalOpen}
@@ -138,9 +120,10 @@ const Game: React.FC = () => {
         contentLabel="You Win!"
         style={customStyles}
       >
-        <h2>You're a winner!</h2>
-        <div>I am a modal</div>
-        <Button title="X Close" action={() => setIsModalOpen(false)} />
+        <div className="centeredContainer">
+          <h2>You're a winner!</h2>
+          <Button title="X Close" action={() => setIsModalOpen(false)} />
+        </div>
       </ReactModal>
     </Fragment>
   )

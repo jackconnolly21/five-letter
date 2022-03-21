@@ -17,18 +17,6 @@
   padding: 5px;
 }
 
-.classRed {
-  color: red;
-}
-
-.classBlue {
-  color: blue;
-}
-
-.classGreen {
-  color: green;
-}
-
 .centeredContainer {
   display: flex;
   justify-content: center;
@@ -38,23 +26,6 @@
 }
 
 /* Base Wordle Styles */
-.toaster {
-  position: absolute;
-  top: 10%;
-  left: 50%;
-  transform: translate(-50%, 0);
-  pointer-events: none;
-  width: fit-content;
-}
-
-#game-toaster {
-  z-index: 1000;
-}
-
-#system-toaster {
-  z-index: 4000;
-}
-
 #game {
   width: 100%;
   max-width: var(--game-max-width);
@@ -135,12 +106,6 @@ header .title {
   padding: 10px;
   box-sizing: border-b ox;
 }
-button.icon {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0 4px;
-}
 
 /* Keyboard Styles */
 :host {
@@ -150,6 +115,7 @@ button.icon {
 #keyboard {
   margin: 0 8px;
   user-select: none;
+  padding: 10px;
 }
 
 .keyRow {
@@ -178,18 +144,6 @@ button.icon {
   align-items: center;
   text-transform: uppercase;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3);
-}
-
-button:focus {
-  outline: none;
-}
-
-button.fade {
-  transition: background-color 0.1s ease, color 0.1s ease;
-}
-
-button:last-of-type {
-  margin: 0;
 }
 
 .half {
