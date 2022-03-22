@@ -55,7 +55,9 @@ const LetterBoard: React.FC<Props> = ({ guessResults, currentGuess }) => {
   return (
     <>
       {guessResults.map((gr, i) => letterRow(gr.guess, gr.result, i))}
-      {currentGuessRow}
+      {(guessResults.length == 0 ||
+        guessResults[guessResults.length - 1].result != 6) &&
+        currentGuessRow}
     </>
   )
 }

@@ -8,6 +8,7 @@
 - make input like wordle
 
 - keyboard input
+- set order of mystery, one per day
 
 - enter button to work
 - more fun winning pop up
