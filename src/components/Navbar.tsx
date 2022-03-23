@@ -7,8 +7,8 @@ export const Navbar: React.FC = () => (
       <NavLink to="/" className="brand-logo">
         5 Letter
       </NavLink>
-      <ul className="right hide-on-med-and-down">
-        <li cy-data="home-nav-link">
+      <ul className="right">
+        <li>
           <NavLink to="/">Home</NavLink>
         </li>
         <li>

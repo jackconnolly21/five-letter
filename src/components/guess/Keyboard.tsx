@@ -12,7 +12,7 @@ const Keyboard: React.FC<Props> = ({ handleKeyPress, currentGuess }) => {
       handleKeyPress('↵')
     } else if (ev.key == 'Backspace') {
       handleKeyPress('←')
-    } else {
+    } else if (ev.key.length == 1 && ev.key.search(/[^A-Za-z]/) == -1) {
       handleKeyPress(ev.key)
     }
   }

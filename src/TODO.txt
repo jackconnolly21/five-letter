@@ -1,5 +1,9 @@
 # TODO
 
+- set order of mystery, one per day
+
+- make keyboard fixed/scroll results
+- make keyboard bigger/wider/less padding
+
 - History of results?
 - Update dictionaries into redux state
-- set order of mystery, one per day

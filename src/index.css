@@ -121,7 +121,7 @@ header .title {
   grid-template-rows: repeat(6, 1fr);
   grid-gap: 5px;
   padding: 10px;
-  box-sizing: border-b ox;
+  box-sizing: border-box;
 }
 
 /* Keyboard Styles */
