@@ -14,9 +14,9 @@ interface ResetGameAction {
   type: typeof RESET_GAME
 }
 
-export type GuessActionTypes = GuessWordAction | ResetGameAction
+export type GameActionTypes = GuessWordAction | ResetGameAction
 
-export interface GuessState {
+export interface GameState {
   guess: {
     mystery: string
     count: number

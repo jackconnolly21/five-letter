@@ -1,11 +1,9 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
-import React, { Fragment } from 'react'
+import React from 'react'
 
 const Button: React.FC<Props> = ({ title, action, color, isDisabled }) => {
   const buttonColor = color ?? 'blue'
   return (
-    <Fragment>
+    <>
       <button
         className={`waves-effect waves-teal btn-flat ${buttonColor}`}
         type="button"
@@ -14,7 +12,7 @@ const Button: React.FC<Props> = ({ title, action, color, isDisabled }) => {
       >
         {title}
       </button>
-    </Fragment>
+    </>
   )
 }
 

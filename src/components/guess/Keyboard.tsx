@@ -1,9 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-const Keyboard: React.FC<Props> = ({ handleKeyPress }) => {
+const Keyboard: React.FC<Props> = ({ handleKeyPress, currentGuess }) => {
   const firstRow = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p']
   const secondRow = ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l']
   const thirdRow = ['z', 'x', 'c', 'v', 'b', 'n', 'm']
+
+  // Handle input from keyboard
+  const handleKeyboardPress = (ev: KeyboardEvent) => {
+    // alert(`pressed ${ev.key}`)
+    if (ev.key == 'Enter') {
+      handleKeyPress('↵')
+    } else if (ev.key == 'Backspace') {
+      handleKeyPress('←')
+    } else {
+      handleKeyPress(ev.key)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyboardPress)
+    return () => {
+      window.removeEventListener('keydown', handleKeyboardPress)
+    }
+  }, [currentGuess])
 
   const toButton = (keyValue: string) => {
     return (
@@ -46,6 +65,7 @@ const Keyboard: React.FC<Props> = ({ handleKeyPress }) => {
 
 interface Props {
   handleKeyPress: (c: string) => void
+  currentGuess: string
 }
 
 export default Keyboard

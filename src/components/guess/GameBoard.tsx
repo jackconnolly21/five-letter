@@ -1,7 +1,7 @@
 import React from 'react'
-import { GuessResult } from '../../features/guess/types'
+import { GuessResult } from '../../features/game/types'
 
-const LetterBoard: React.FC<Props> = ({ guessResults, currentGuess }) => {
+const GameBoard: React.FC<Props> = ({ guessResults, currentGuess }) => {
   const getResultColor = (result: number) => {
     if (result == 0) {
       return 'red'
@@ -67,4 +67,4 @@ interface Props {
   currentGuess: string
 }
 
-export default LetterBoard
+export default GameBoard

@@ -2,7 +2,7 @@
 
 import { generateMysteryWord } from '../../components/guess/helpers'
 import { GUESS_WORD, RESET_GAME } from './actions'
-import { GuessActionTypes, GuessResult } from './types'
+import { GameActionTypes, GuessResult } from './types'
 
 const initialState = {
   mystery: generateMysteryWord(),
@@ -10,7 +10,7 @@ const initialState = {
   guesses: [] as GuessResult[],
 }
 
-export default (state = initialState, action: GuessActionTypes) => {
+export default (state = initialState, action: GameActionTypes) => {
   switch (action.type) {
     case GUESS_WORD:
       return {

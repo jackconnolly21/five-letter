@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { useHistory } from 'react-router-dom'
 
 export const Rules: React.FC = () => {
   const history = useHistory()
 
   return (
-    <Fragment>
+    <>
       <h1>Rules</h1>
 
       <h4>How to play Five Letter Word Game:</h4>
@@ -65,6 +65,6 @@ export const Rules: React.FC = () => {
       >
         Go back
       </button>
-    </Fragment>
+    </>
   )
 }

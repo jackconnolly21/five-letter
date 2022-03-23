@@ -25,6 +25,23 @@
   overflow: hidden;
 }
 
+.modalHeader {
+  font-family: 'nyt-karnakcondensed';
+  font-weight: 800;
+  font-size: 28px;
+  color: darkgreen;
+  line-height: 120%;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.strongText {
+  font-family: 'nyt-karnakcondensed';
+  font-weight: 400;
+  font-size: 20px;
+  text-align: center;
+}
+
 /* Base Wordle Styles */
 #game {
   width: 100%;

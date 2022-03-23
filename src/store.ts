@@ -1,10 +1,10 @@
 import { combineReducers, createStore } from 'redux'
 import { devToolsEnhancer } from 'redux-devtools-extension'
-import { GuessReducer } from './features/guess'
+import { GameReducer } from './features/game'
 
 /* Create root reducer, containing all features of the application */
 const rootReducer = combineReducers({
-  guess: GuessReducer,
+  guess: GameReducer,
 })
 
 const store = createStore(
