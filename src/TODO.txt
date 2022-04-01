@@ -1,9 +1,8 @@
 # TODO
 
-- set order of mystery, one per day
-
 - make keyboard fixed/scroll results
 - make keyboard bigger/wider/less padding
+- make practice mode (remove number, add new game button, random word)
 
 - History of results?
 - Update dictionaries into redux state

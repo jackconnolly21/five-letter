@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { actions, selectors } from '../../features/game'
@@ -7,6 +9,13 @@ import { getScore, validateGuess } from './helpers'
 import Keyboard from './Keyboard'
 import GameBoard from './GameBoard'
 import WinModal from './WinModal'
+import {
+  footerContainerCss,
+  gameContainerCss,
+  paddedContainerCss,
+  paddedCss,
+  strongTextCss,
+} from '../../styles/gameStyles'
 
 const Game: React.FC = () => {
   const mysteryWord = useSelector(selectors.getMysteryWord)
@@ -66,26 +75,30 @@ const Game: React.FC = () => {
   const newGame = () => {
     setGuess('')
     setIsLocked(false)
-    dispatch({ type: actions.RESET_GAME })
+    dispatch({ type: actions.NEW_DAILY_GAME })
   }
 
   return (
-    <>
-      <div className="padded centeredContainer">
-        <Button title="New Game" action={newGame} color="blue" />
+    <div className={gameContainerCss.toString()}>
+      <div className={paddedCss.toString()}>
+        {/* <div className={paddedContainerCss.toString()}>
+          <Button title="New Game" action={newGame} color="blue" />
+        </div> */}
+
+        <GameBoard guessResults={pastGuesses} currentGuess={guess} />
       </div>
 
-      <GameBoard guessResults={pastGuesses} currentGuess={guess} />
-
-      <Keyboard handleKeyPress={handleKeyPress} currentGuess={guess} />
+      <div className={footerContainerCss.toString()}>
+        <Keyboard handleKeyPress={handleKeyPress} currentGuess={guess} />
+      </div>
 
       <WinModal isOpen={isWinModalOpen} setIsOpen={setIsWinModalOpen} />
       <Modal
-        body={<div className="strongText">{errorMessage}</div>}
+        body={<div className={strongTextCss.toString()}>{errorMessage}</div>}
         isOpen={isErrorModalOpen}
         setIsOpen={setIsErrorModalOpen}
       />
-    </>
+    </div>
   )
 }
 

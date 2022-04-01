@@ -1,5 +1,20 @@
 import { fiveLetterWords } from '../../dicts/five'
 import { mysteryWords } from '../../dicts/mystery'
+import { mysteryOrder } from '../../dicts/mysteryOrder'
+
+// April 1st
+const firstDate = new Date(2022, 3, 1)
+
+export const getGameNumber = () => {
+  const today = new Date()
+  const dateDiff = (today.getTime() - firstDate.getTime()) / (1000 * 3600 * 24)
+  return Math.floor(dateDiff)
+}
+
+export const getDailyMysteryWord = () => {
+  const index = mysteryOrder[getGameNumber()]
+  return mysteryWords[index]
+}
 
 export const generateMysteryWord = () => {
   const randomIndex = Math.floor(Math.random() * mysteryWords.length)

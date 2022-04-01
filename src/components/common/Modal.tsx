@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react'
 import ReactModal from 'react-modal'
+import { paddedContainerCss } from '../../styles/gameStyles'
 import { Button } from '../common'
 
 const Modal: React.FC<Props> = ({ body, isOpen, setIsOpen }) => {
@@ -23,7 +24,7 @@ const Modal: React.FC<Props> = ({ body, isOpen, setIsOpen }) => {
         ariaHideApp={false}
       >
         {body}
-        <div className="centeredContainer padded">
+        <div className={paddedContainerCss.toString()}>
           <Button title="Close" action={() => setIsOpen(false)} />
         </div>
       </ReactModal>

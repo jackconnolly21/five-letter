@@ -3,28 +3,6 @@
   padding-right: 1rem;
 }
 
-.group {
-  display: flex;
-  justify-content: space-between;
-}
-
-.inline {
-  display: inline;
-  padding: 5px;
-}
-
-.padded {
-  padding: 5px;
-}
-
-.centeredContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-  overflow: hidden;
-}
-
 .modalHeader {
   font-family: 'nyt-karnakcondensed';
   font-weight: 800;
@@ -32,13 +10,6 @@
   color: darkgreen;
   line-height: 120%;
   letter-spacing: 0.02em;
-  text-align: center;
-}
-
-.strongText {
-  font-family: 'nyt-karnakcondensed';
-  font-weight: 400;
-  font-size: 20px;
   text-align: center;
 }
 
@@ -127,55 +98,4 @@ header .title {
 /* Keyboard Styles */
 :host {
   height: var(--keyboard-height);
-}
-
-#keyboard {
-  margin: 0 8px;
-  user-select: none;
-  padding: 10px;
-}
-
-.keyRow {
-  display: flex;
-  width: 100%;
-  margin: 0 auto 8px;
-  /* https://stackoverflow.com/questions/46167604/ios-html-disable-double-tap-to-zoom */
-  touch-action: manipulation;
-}
-
-.keyRow button {
-  font-family: inherit;
-  font-weight: bold;
-  border: 0;
-  padding: 0;
-  margin: 0 6px 0 0;
-  height: 58px;
-  border-radius: 4px;
-  cursor: pointer;
-  user-select: none;
-  background-color: #818384;
-  color: #ffffff;
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-transform: uppercase;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3);
-}
-
-.half {
-  flex: 0.5;
-}
-
-.one {
-  flex: 1;
-}
-
-.one-and-a-half {
-  flex: 1.5;
-  font-size: 12px;
-}
-
-.two {
-  flex: 2;
 }

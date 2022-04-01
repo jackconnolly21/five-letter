@@ -1,8 +1,17 @@
 import React from 'react'
 import { GuessResult } from '../../features/game/types'
+import {
+  centeredContainerCss,
+  getLetterBoxStyles,
+} from '../../styles/gameStyles'
+import { validateGuess } from './helpers'
 
 const GameBoard: React.FC<Props> = ({ guessResults, currentGuess }) => {
-  const getResultColor = (result: number) => {
+  const getResultColor = (result: number | null) => {
+    if (result == null) {
+      return 'black'
+    }
+
     if (result == 0) {
       return 'red'
     } else if (result <= 3) {
@@ -12,38 +21,29 @@ const GameBoard: React.FC<Props> = ({ guessResults, currentGuess }) => {
     }
   }
 
-  const boxStyles = {
-    border: '2px solid #969696',
-    height: 50,
-    padding: 5,
-    width: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-    display: 'flex',
-  }
-
   const letterRow = (guess: string, result: number | null, i: number) => {
     if (guess.length > 5) {
       console.log('Error: Word length greater than 5')
     }
 
-    const styles = { ...boxStyles, color: '#fff', backgroundColor: '#444' }
+    // For current guess color red if invalid
+    const letterColor =
+      guess.length == 5 && result == null && !validateGuess(guess).isValid
+        ? 'red'
+        : '#fff'
+    const letterStyles = getLetterBoxStyles(letterColor, '#444')
     const letters = [0, 1, 2, 3, 4].map((idx) => (
-      <div style={styles} key={idx}>
+      <div className={letterStyles.toString()} key={idx}>
         {idx < guess.length ? guess[idx].toUpperCase() : null}
       </div>
     ))
 
-    const resultStyles = {
-      ...boxStyles,
-      color: result == null ? 'black' : getResultColor(result),
-      backgroundColor: '#969696',
-    }
+    const resultStyles = getLetterBoxStyles(getResultColor(result), '#969696')
 
     return (
-      <div key={i} className="centeredContainer">
+      <div key={i} className={centeredContainerCss.toString()}>
         {letters}
-        <div style={resultStyles} key={`res${i}`}>
+        <div className={resultStyles.toString()} key={`res${i}`}>
           {result == 6 ? 'Win!' : result}
         </div>
       </div>
