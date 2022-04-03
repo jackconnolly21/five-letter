@@ -65,7 +65,7 @@ const Keyboard: React.FC<Props> = ({ handleKeyPress, currentGuess }) => {
             onClick={() => handleKeyPress('←')}
             className={`${keyRowButtonCss} ${oneAndAHalfFlexCss}`}
           >
-            del
+            ←
           </button>
         </div>
       </div>

@@ -1,7 +1,6 @@
 # TODO
 
 - make keyboard fixed/scroll results
-- make keyboard bigger/wider/less padding
 - make practice mode (remove number, add new game button, random word)
 
 - History of results?

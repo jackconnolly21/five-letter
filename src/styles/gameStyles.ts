@@ -10,6 +10,7 @@ export const centeredContainerCss = css({
   alignItems: 'center',
   flexGrow: 1,
   overflow: 'hidden',
+  width: '100%',
 })
 
 export const paddedContainerCss = css(centeredContainerCss, paddedCss)
@@ -42,3 +43,9 @@ export const getLetterBoxStyles = (color: string, backgroundColor: string) =>
     color: color,
     backgroundColor: backgroundColor,
   })
+
+export const appContainerCss = css({
+  '@media(max-width: 600px)': {
+    width: '98%',
+  },
+})

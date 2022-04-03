@@ -62,10 +62,6 @@ header .title {
   justify-content: flex-end;
 }
 
-#nav-button {
-  padding-top: 2px;
-}
-
 @media (min-width: 415px) {
   header {
     padding: 0px 16px;
